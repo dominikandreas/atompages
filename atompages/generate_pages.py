@@ -62,12 +62,15 @@ def get_output_structure(source_structure, language):
 
     def get_name_from_path(p):
         p = p[1:] if p.startswith("/") else p
-        if re.match("^[/]*[0-9]+$", p.split("_")[0]):
-            p = "/".join(["_".join(s.split("_")[1:]) for s in p.split("/")])
-        if re.match("^[/]*%s$"%language, p.split("_")[0]):
-            p = "/".join(["_".join(p.split("_")[1:]) for s in p.split("/")])
-        return p.replace("_"," ")
+        fix_name = lambda s: "_".join(s.split("_")[1:]) if "_" in s else s
 
+        if re.match("^[/]*[0-9]+$", p.split("_")[0]):
+            p = "/".join([fix_name(s) for s in p.split("/")])
+        if re.match("^[/]*%s$"%language, p.split("_")[0]):
+            p = "/".join([fix_name(s) for s in p.split("/")])
+            
+        return p.replace("_"," ")
+    print(source_structure)
     return fix_umlaute(recursive_map(get_name_from_path, source_structure))
 
 def get_pages(env, src_path, target_path, current_root, src_structure, out_structure):
