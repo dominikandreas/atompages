@@ -1,0 +1,179 @@
+/* CAUTION only edit main.scss.tmpl, not main.scss (gets overwritten)*/
+
+{%- for style, value in styles.items() %}
+${{style}}: {{value}};
+{% endfor -%}
+
+{% raw %}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body{
+  overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+}
+
+pure-g, pre, body {
+  line-height: 1.7em;
+  color: $font-color;
+  font-size: $font-size;
+  font-family: $font-family;
+  background-color: #fff;
+  border: 0px solid #fff;
+  /*white-space: normal;*/
+word-break: break-word;
+}
+
+.navbar-default{
+  z-index: 4;
+  position: fixed;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.dropdown-menu>li>a {
+    font-size: large;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font-family;
+  font-weight: 800;
+}
+.is-center {
+  text-align: center;
+}
+
+.intro-header {
+  background-color: #808080;
+  background: no-repeat center center;
+  background-image: $header-background-img;
+  width: $header-width;
+  min-height: $header-min-height;
+  background-attachment: scroll;
+  background-size: 100% auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin-bottom: 50px;
+  z-index: -1;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+.intro-header .site-heading{
+  padding: 100px 0 50px;
+  color: white;
+}
+@media only screen and (min-width: 768px) {
+  .intro-header .site-heading,{
+    padding: 150px 0;
+  }
+}
+.intro-header .site-heading,{
+  text-align: center;
+}
+.intro-header .site-heading h1{
+  margin-top: 0;
+  font-size: 30px;
+}
+.intro-header .site-heading .subheading, {
+  font-size: 24px;
+  line-height: 1.1;
+	display: block;
+  font-family: $heading-font-family;
+  font-weight: 300;
+  margin: 10px 0 0;
+}
+@media only screen and (min-width: 768px) {
+  .intro-header .site-heading h1 {
+    font-size: 80px;
+  }
+}
+
+hr.small {
+max-width: 100px;
+margin: 15px auto;
+border-width: 4px;
+border-color: white;
+}
+/*
+* -- CONTENT STYLES --
+* This represents the content area (everything below the blue section)
+*/
+.content-page{
+ background: $content-background-color;
+
+}
+.content{
+ z-index:2;
+ background: $content-background-color
+}
+.page-offset{
+  height: $page-offset-height;
+}
+
+.content-container {
+  max-width: $content-max-width;
+  min-height: 12%;
+  z-index: 2;
+  background: white;
+  line-height: 1.6em;
+  margin:1em 1em 1em 1em;
+  padding: 2em 0 2em 0;
+}
+
+.content-head {
+  font-weight: 400;
+  text-transform: $title-text-transform;
+  letter-spacing: 0.1em;
+}
+
+
+.ribbon {
+  background: #2d3e50;
+  color: #aaa;
+}
+
+pre code{
+  padding:0;
+  font-size:14px;
+  line-height: 20px;
+}
+
+footer {
+  background: #111;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 2em 0 2em;
+  text-align: center;
+}
+
+/* -- TABLET (AND UP) MEDIA QUERIES -- */
+@media (min-width: 48em) {
+  body {
+    font-size:  $font-size
+  }
+  .content {
+    padding: 1em;
+  }
+}
+
+/* -- DESKTOP (AND UP) MEDIA QUERIES -- */
+@media (min-width: 78em) {
+  .intro-header {
+    font-size: 300%;
+  }
+}
+
+{% endraw %}

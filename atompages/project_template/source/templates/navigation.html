@@ -1,0 +1,51 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Home</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav navbar-right" >
+          {% for title, entry in menu %}
+            {% if entry is iterable %}
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    {{title}}
+                  </a>
+                  <ul class="dropdown-menu">
+                    {% for subtitle, subentry in entry %}
+                        {% if subentry is iterable %}
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{subtitle}}
+                              </a>
+                              <ul class="dropdown-menu">
+                                {% for subsubtitle, subsubentry in subentry %}
+                                    <li> <a href="{{subsubentry.link}}">{{subsubtitle}}</a></li>
+                                {% endfor %}
+                              </ul>
+                            </li>
+                        {% else %}
+                          <li> <a href="{{subentry.link}}">{{subtitle}}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                  </ul>
+                </li>
+
+            {% else %}
+                <li> <a href="{{entry.link}}">{{title}}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+</nav>

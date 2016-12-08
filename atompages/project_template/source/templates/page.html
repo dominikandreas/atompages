@@ -1,0 +1,52 @@
+{% include "head.html" ignore missing %}
+{% include "body_top.html" ignore missing %}
+
+<div class="container">
+      <div class="row">
+        <div class="col-md-12 page-offset"></div>
+      </div>
+      <div class="row">
+          <div class="col-md-12 content-head ">
+            <h2 class="is-center">{{page.title}}</h2>
+          </div>
+          <div class="col-md-12 content-container">
+            <div class="row">
+              <div class="col-md-offset-1 .col-lg-offset-1 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 .col-lg-offset-1">
+              		{% block content %}
+              		{% endblock %}
+              </div>
+            </div>
+        </div>
+      </div>
+  	<div class="row">
+  			<div class="col-md-12 content-head">
+  					<h2 class="is-center">{{contact_header}}</h2>
+  					<div class="row">
+  						<div class="col-md-offset-1 .col-lg-offset-1 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 .col-lg-offset-1">
+  								<!--{% raw %}{% include "contact.html" ignore missing %}{% endraw %}-->
+  						</div>
+  					</div>
+  			</div>
+  	</div>
+</div>
+<footer>
+         {% include "footer.html" ignore missing %}
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+
+<script src="/static/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+{% if commandline_variables.dev %}
+  <script type="text/javascript" src="/static/js/page_refresh.js"></script>
+{% endif %}
+
+</script>
+
+
+</body>
+</html>
