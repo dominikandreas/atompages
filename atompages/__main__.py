@@ -133,9 +133,23 @@ def generate(root=None):
     from atompages import generate_pages
     generate_pages.build_site(root)
 
+def get_images(base_dir="./"):
+    """return the markdown include code for all images in base_dir (default: current directory)
+    """
+    base_dir = os.path.abspath(base_dir).replace("\\","/")
+    if not "/static/img/" in base_dir:
+        raise RuntimeError("Images need to be located in the /static/img/ folder of your project")
+    img_paths = sum([[root+"/"+f for f in files] for root, folders, files in os.walk(base_dir)], [])
+
+    img_paths = filter(lambda i: True in [i.lower().endswith(s) for s in ['jpg','png','gif']], img_paths)
+    img_paths = [p.replace("//","/") for p in img_paths]
+    img_paths = ["![](/static/img/%s)" % (img.split("/static/img/")[-1].replace("\\","/")) for img in img_paths]
+
+    for entry in img_paths:
+        print(entry)
 
 cmdline_functions = {"init": init, "develop":develop, "webserve":webserve,
-                     "generate": generate}
+                     "generate": generate, "get_images": get_images}
 
 def print_help(fkt_name):
     fkt = cmdline_functions[fkt_name]
