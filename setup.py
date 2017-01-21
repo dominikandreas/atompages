@@ -18,7 +18,8 @@ setup(name='atompages',
         "watchdog",
         "libsass",
         "markdown",
-        "cherrypy"
+        "cherrypy",
+        "MarkupSafe>=0.23"
     ],
     license='MIT',
     include_package_data=True,
