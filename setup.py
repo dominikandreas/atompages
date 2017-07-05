@@ -14,6 +14,8 @@ setup(name='atompages',
     author='Dominik Dienlin',
     author_email='dominik@dienlin.net',
     install_requires=[
+        "click",
+        "simple_tools",
         "jinja2",
         "watchdog",
         "libsass",
@@ -26,5 +28,5 @@ setup(name='atompages',
     packages=['atompages'],
     zip_safe=False,
     entry_points = {
-        'console_scripts': ['atompages=atompages.__main__:main'],
+        'console_scripts': ['atompages=atompages.cli:main'],
     })
